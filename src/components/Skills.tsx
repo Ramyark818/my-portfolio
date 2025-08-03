@@ -1,4 +1,4 @@
-// import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Skills = () => {
   const skillCategories = [
@@ -31,15 +31,42 @@ const Skills = () => {
     }
   ];
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visibleSkills, setVisibleSkills] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleSkills(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section
+      id="skills"
+      ref={sectionRef}
+      className="py-20 bg-neutral-50 dark:bg-gray-900 text-gray-900 dark:text-white"
+      data-aos="fade-up"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16" data-aos="zoom-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Skills & Expertise
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             A comprehensive overview of my technical skills and proficiency levels
           </p>
         </div>
@@ -48,22 +75,24 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              data-aos="fade-up"
+              data-aos-delay={`${categoryIndex * 150}`}
+              className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+              <h3 className="text-xl font-bold mb-6 text-center">
                 {category.title}
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 font-medium">{skill.name}</span>
-                      <span className="text-gray-500 text-sm">{skill.level}%</span>
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
+                      <span className="text-gray-500 dark:text-gray-400 text-sm">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
                       <div
                         className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
+                        style={{ width: visibleSkills ? `${skill.level}%` : '0%' }}
                       ></div>
                     </div>
                   </div>
