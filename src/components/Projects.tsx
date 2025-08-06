@@ -9,7 +9,7 @@ const Projects = () => {
       technologies: ["Java", "JavaFX", "FXML", "OOP", "Animation"],
       icon: <Code className="w-6 h-6" />,
       github: "https://github.com/Ramyark818/TeachingAid",
-      demo: "#",
+      demo: "https://drive.google.com/file/d/1W8tJ4l_EFCrsu-cIu8WdgTw1ZkqnP4cN/view?usp=drivesdk",
       image:
         "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
@@ -20,7 +20,7 @@ const Projects = () => {
       technologies: ["React", "Node.js", "MangoDb", "Express", "Tailwind CSS"],
       icon: <Code className="w-6 h-6" />,
       github: "https://github.com/Ramyark818/Ecommerce-app",
-      demo: "#",
+      demo: "https://shopping-frontend-three.vercel.app",
       image:
         "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
     },
