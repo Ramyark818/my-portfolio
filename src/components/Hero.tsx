@@ -55,7 +55,7 @@ const Hero = () => {
               Get In Touch
             </a>
             <a
-              href="https://drive.google.com/file/d/1DC_1y_Ge0xfmEZC1eHK4JADL9wQFbyMl/view?usp=drivesdk"
+              href="https://drive.google.com/file/d/17P4cZi2f5k8UFz3y_xPmHeXHJ0O7ZTbL/view?usp=drivesdk"
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 px-8 py-4 rounded-full font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 flex items-center gap-2"
